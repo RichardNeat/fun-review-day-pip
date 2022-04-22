@@ -2,6 +2,8 @@
 
 For this block review, you have several specifications which need to be completed. You are expected to use full TDD in order to demonstrate your understanding of the questions and of good TDD practices. Good luck!
 
+`nb.` Please complete one challenge from each section first, before returning to the rest!
+
 ## Section 1 At-The-Zoo (Array Methods)
 
 For each of these challenges, be sure to use the appropriate array-method, and demonstrate your understanding of TDD.
@@ -26,6 +28,8 @@ classifyAnimals(animals, 'mammal');
 classifyAnimals(animals, 'reptile');
 // returns [{ name: 'python', type: 'reptile' }]
 ```
+
+`Now move on to the first closure problem`
 
 ### 2 - `createZooDisplays`
 
@@ -120,6 +124,8 @@ makeMultiplesOf6(1); // [6]
 makeMultiplesOf6(5); // [6, 12, 18, 24, 30]
 ```
 
+`Now move on to the OOP banking app section`
+
 ### 2 - `secureFunc`
 
 Write a higher-order function called `secureFunc`.
@@ -203,6 +209,8 @@ anatUser.depositMoney(2.3);
 anatUser.currentBalance; // 12.86
 ```
 
+`Now move on to the first recursion problem`
+
 It must have a `createNewPot` method which will add a new property to the `pots` property with a key for the type of the pot being created and an object containing the `potBalance`:
 
 ```js
@@ -273,6 +281,8 @@ deepKeys({ a: 1, b: 2, c: 3 }) // ['a','b','c']
 deepKeys({ a: 1, b: 2, c: { d: 10 }) // ['a','b','c','d']
 deepKeys({ a: 1, b: { e: 10 }, c: { d: 10, e: { f: 100, h: 10 } } }) // [ 'a', 'b', 'e', 'c', 'd', 'e', 'f', 'h' ]
 ```
+
+`Well done! You have completed a problem from each section! You may return to the array methods section to attempt the remaining challenges`
 
 ### 2 - `deepRoute`
 

@@ -1,8 +1,8 @@
-# Fundamentals Block Review
+# JS Fundamentals Review Day
 
-For this block review, you have several specifications which need to be completed. You are expected to use full TDD in order to demonstrate your understanding of the questions and of good TDD practices. Good luck!
+Today you have several specifications to work through. You are expected to use TDD throughout in order to demonstrate your understanding of the questions and of good TDD practices (the tests for _Section 2 - Using Closures_ have been written for you). Have fun!
 
-`nb.` Please complete one challenge from each section first, before returning to the rest!
+❗️ `nb.` - Please look out for the **red exclamation marks** ❗️ to tell you when to move onto the next section.
 
 ## Section 1 At-The-Zoo (Array Methods)
 
@@ -28,8 +28,6 @@ classifyAnimals(animals, 'mammal');
 classifyAnimals(animals, 'reptile');
 // returns [{ name: 'python', type: 'reptile' }]
 ```
-
-`Now move on to the first closure problem`
 
 ### 2 - `createZooDisplays`
 
@@ -69,6 +67,8 @@ createZooDisplays(animals);
  'My name is Salome, and I am a Rattlesnake and I'm originally from Argentina']
 */
 ```
+
+❗️ `Now move on to the first closure problem` ❗️
 
 ### 3 - `createAnimalTally`
 
@@ -124,7 +124,7 @@ makeMultiplesOf6(1); // [6]
 makeMultiplesOf6(5); // [6, 12, 18, 24, 30]
 ```
 
-`Now move on to the OOP banking app section`
+❗️ `Now move on to the OOP banking app section` ❗️
 
 ### 2 - `secureFunc`
 
@@ -209,7 +209,7 @@ anatUser.depositMoney(2.3);
 anatUser.currentBalance; // 12.86
 ```
 
-`Now move on to the first recursion problem`
+❗️ `Now move on to the first recursion problem` ❗️
 
 It must have a `createNewPot` method which will add a new property to the `pots` property with a key for the type of the pot being created and an object containing the `potBalance`:
 
@@ -282,7 +282,7 @@ deepKeys({ a: 1, b: 2, c: { d: 10 }) // ['a','b','c','d']
 deepKeys({ a: 1, b: { e: 10 }, c: { d: 10, e: { f: 100, h: 10 } } }) // [ 'a', 'b', 'e', 'c', 'd', 'e', 'f', 'h' ]
 ```
 
-`Well done! You have completed a problem from each section! You may return to the array methods section to attempt the remaining challenges`
+❗️ `Well done! You have completed a problem from each section! You may return to the array methods section to attempt the remaining challenges` ❗️
 
 ### 2 - `deepRoute`
 

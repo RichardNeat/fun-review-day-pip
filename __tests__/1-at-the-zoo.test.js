@@ -2,7 +2,7 @@ const {
   classifyAnimals,
   createZooDisplays,
   createAnimalTally
-} = require('./1-at-the-zoo.js');
+} = require('../sections/1-at-the-zoo.js');
 
 describe('classifyAnimals', () => {});
 

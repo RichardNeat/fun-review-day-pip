@@ -1,8 +1,14 @@
 # JS Fundamentals Review Day
 
-Today you have several specifications to work through. You are expected to use TDD throughout in order to demonstrate your understanding of the questions and of good TDD practices (the tests for _Section 2 - Using Closures_ have been written for you). Have fun!
+Today you have several sections to work through. You are expected to use TDD throughout in order to demonstrate your understanding of the topics and of good TDD practices (the tests for _Section 3 - Using Closures_ have been written for you). Have fun!
 
-❗️ `nb.` - Please look out for the **red exclamation marks** ❗️ to tell you when to move onto the next section.
+**tip:** When running the test command you can pass jest a fileName pattern as an argument in the command line. e.g. `npm test 1` will only run tests that contain 1, just `__tests__/1-at-the-zoo.test.js` in this case. You might find this useful to only run the tests you want to work on.
+
+## Submitting your work
+
+At the end of each section please push your work up to github and send us a link to your repo. This can be done via the `/nchelp review` slack command. Leave a comment in the form letting us know which section you've completed and add a link to your repo. Your repo url will be of the form `https://github.com/yourGithubUserName/fun-review-day`. You can copy this from the address bar in your browser or run `git remote -v` in the terminal.
+
+**tip** If you forgot to fork and cloned the Northcoders repo directly you can fork it afterwards and then change the remote by running `git remote set-url origin your_repo_link_here`.
 
 ## Section 1 At-The-Zoo (Array Methods)
 
@@ -68,8 +74,6 @@ createZooDisplays(animals);
 */
 ```
 
-❗️ `Now move on to the first closure problem` ❗️
-
 ### 3 - `createAnimalTally`
 
 It turns out that classifying the animals isn't enough for the zoo keeper and they'd really like to have an object giving a tally of the different animals in the zoo. Implement a function that takes an array of different animal types and returns a tally object counting each of the different animal types.
@@ -79,7 +83,7 @@ createAnimalTally(['tiger']); // returns { tiger: 1 }
 createAnimalTally(['tiger', 'parrot', 'parrot']); // returns { tiger: 1, parrot: 2 }
 ```
 
-Your final test should be using the `ncArk` from the `/data/challenge1-data file` _DO NOT COPY AND PASTE THIS INTO YOUR SPEC FILE - it's huge!_ Be sure to export it properly. It should return the following object:
+Your final test should be using the `ncArk` from the `/data/zoo-data file` _DO NOT COPY AND PASTE THIS INTO YOUR SPEC FILE - it's huge!_ Be sure to export it properly. It should return the following object:
 
 ```js
 { platypus: 69,
@@ -94,92 +98,10 @@ Your final test should be using the `ncArk` from the `/data/challenge1-data file
   koala: 82 }
 ```
 
-## Section 2 - Using Closures
+❗️ `Push your work to Github and submit it before moving on` ❗️
+❗️ `Commit and push your work to github then use /nchelp review to submit` ❗️
 
-### 1 - `generateMultiples`
-
-Write a higher-order function called `generateMultiples`.
-
-Your `generateMultiples` function should:
-
-- take a number ( representing a multiple ) as an argument
-- return a new function.
-
-The new function should:
-
-- take a number to determine how long the list of multiples should be
-- return an array containing a list of multiples
-
-### For Example:
-
-```js
-const makeMultiplesOf10 = generateMultiples(10);
-makeMultiplesOf10(0); // []
-makeMultiplesOf10(3); // [10, 20, 30]
-```
-
-```js
-const makeMultiplesOf6 = generateMultiples(6);
-makeMultiplesOf6(1); // [6]
-makeMultiplesOf6(5); // [6, 12, 18, 24, 30]
-```
-
-❗️ `Now move on to the OOP banking app section` ❗️
-
-### 2 - `secureFunc`
-
-Write a higher-order function called `secureFunc`.
-
-It should do the following:
-
-- take an original password (string) and a function as its arguments
-- return a new function.
-
-The new function should:
-
-- take a password attempt (string)
-- if the password attempt matches the original password then it will return invocation of the original function
-- otherwise, the new function will return a message stating: `Sorry your password is incorrect!`
-
-### For example:
-
-```js
-const saySecret = () => {
-  return 'Hopscotch';
-};
-
-const securedSaySecret = secureFunc('nc123@!', saySecret);
-securedSaySecret('nc123@!'); // returns 'Hopscotch';
-securedSaySecret('oops'); // returns 'Sorry your password is incorrect!';
-```
-
-```js
-const sum = (a, b) => {
-  return a + b;
-};
-
-const securedSum = secureFunc('nc123@!', sum);
-securedSum('nc123@!', 21, 6); // returns 27
-securedSum('oops', 10, 5); // returns 'Sorry your password is incorrect!';
-```
-
-### 3 - ADVANCED - `rememberMe`
-
-_This challenge is advanced, if you've reached it, please proceed with the other sections before attempting this_
-
-Write a higher-order function called `rememberMe`, which takes a function as it's only argument.
-
-It should do the following:
-
-- take a function
-- return a new function.
-
-The new function should:
-
-- if the new function has not previously been called with those arguments, it should return the output of the original function, but store it in a cache
-- if the function has been called with those arguments, it should return the output of the original function **WITHOUT** having to execute the functionality
-
-## Section 3 - OOP Banking App
+## Section 2 - OOP Banking App
 
 You are building a mobile banking app for a new tech startup! The CTO of the company wants you to design a `User` class that will have various features enabling a user to interact with their new account.
 
@@ -208,8 +130,6 @@ anatUser.currentBalance; // 10.56
 anatUser.depositMoney(2.3);
 anatUser.currentBalance; // 12.86
 ```
-
-❗️ `Now move on to the first recursion problem` ❗️
 
 It must have a `createNewPot` method which will add a new property to the `pots` property with a key for the type of the pot being created and an object containing the `potBalance`:
 
@@ -270,6 +190,79 @@ anatUser.pots.holiday;
 */
 ```
 
+❗️ `Push your work to Github and submit it before moving on` ❗️
+❗️ `Commit and push your work to github then use /nchelp review to submit` ❗️
+
+## Section 3 - Using Closures
+
+### 1 - `generateMultiples`
+
+Write a higher-order function called `generateMultiples`.
+
+Your `generateMultiples` function should:
+
+- take a number ( representing a multiple ) as an argument
+- return a new function.
+
+The new function should:
+
+- take a number to determine how long the list of multiples should be
+- return an array containing a list of multiples
+
+### For Example:
+
+```js
+const makeMultiplesOf10 = generateMultiples(10);
+makeMultiplesOf10(0); // []
+makeMultiplesOf10(3); // [10, 20, 30]
+```
+
+```js
+const makeMultiplesOf6 = generateMultiples(6);
+makeMultiplesOf6(1); // [6]
+makeMultiplesOf6(5); // [6, 12, 18, 24, 30]
+```
+
+### 2 - `secureFunc`
+
+Write a higher-order function called `secureFunc`.
+
+It should do the following:
+
+- take an original password (string) and a function as its arguments
+- return a new function.
+
+The new function should:
+
+- take a password attempt (string)
+- if the password attempt matches the original password then it will return invocation of the original function
+- otherwise, the new function will return a message stating: `Sorry your password is incorrect!`
+
+### For example:
+
+```js
+const saySecret = () => {
+  return 'Hopscotch';
+};
+
+const securedSaySecret = secureFunc('nc123@!', saySecret);
+securedSaySecret('nc123@!'); // returns 'Hopscotch';
+securedSaySecret('oops'); // returns 'Sorry your password is incorrect!';
+```
+
+```js
+const sum = (a, b) => {
+  return a + b;
+};
+
+const securedSum = secureFunc('nc123@!', sum);
+securedSum('nc123@!', 21, 6); // returns 27
+securedSum('oops', 10, 5); // returns 'Sorry your password is incorrect!';
+```
+
+❗️ `Push your work to Github and submit it before moving on` ❗️
+❗️ `Commit and push your work to github then use /nchelp review to submit` ❗️
+
 ## Section 4 - Recursion
 
 ### 1 - `deepKeys`
@@ -281,8 +274,6 @@ deepKeys({ a: 1, b: 2, c: 3 }) // ['a','b','c']
 deepKeys({ a: 1, b: 2, c: { d: 10 }) // ['a','b','c','d']
 deepKeys({ a: 1, b: { e: 10 }, c: { d: 10, e: { f: 100, h: 10 } } }) // [ 'a', 'b', 'e', 'c', 'd', 'e', 'f', 'h' ]
 ```
-
-❗️ `Well done! You have completed a problem from each section! You may return to the array methods section to attempt the remaining challenges` ❗️
 
 ### 2 - `deepRoute`
 
@@ -296,6 +287,26 @@ deepRoute(['a', 'b', ['c', 'd'], 'e'], 'c'); // returns '2->0' (2 for the positi
 deepRoute(['a', 'b', ['c', ['d'], 'e', 'f']], 'd'); // returns '2->1->0'
 ```
 
-### 3 - `flat`
+## Section 5 - Additional
 
-Reimplement the experimental array method `flat`. You can find the [docs here](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/flat)
+Well done if you've got through everything. This is the end of work we would like you to submit but there some additional challenges below if you'd like some more practice. You'll have to setup your own files and tests for each of these problems.
+
+### 1 - ADVANCED - `rememberMe`
+
+_This challenge is advanced, if you've reached it, please proceed with the other sections before attempting this_
+
+Write a higher-order function called `rememberMe`, which takes a function as it's only argument.
+
+It should do the following:
+
+- take a function
+- return a new function.
+
+The new function should:
+
+- if the new function has not previously been called with those arguments, it should return the output of the original function, but store it in a cache
+- if the function has been called with those arguments, it should return the output of the original function **WITHOUT** having to execute the functionality
+
+### 2 - ADVANCED - `flat`
+
+Reimplement the array method `flat`. You can find the [docs here](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/flat)

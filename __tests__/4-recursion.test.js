@@ -1,4 +1,4 @@
-const { deepKeys, flat, deepRoute } = require('./4-recursion.js');
+const { deepKeys, flat, deepRoute } = require('../sections/4-recursion.js');
 
 describe('deepKeys', () => {});
 

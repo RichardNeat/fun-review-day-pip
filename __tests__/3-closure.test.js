@@ -1,4 +1,8 @@
-const { generateMultiples, secureFunc, rememberMe } = require('./2-closure.js');
+const {
+  generateMultiples,
+  secureFunc,
+  rememberMe
+} = require('../sections/2-closure.js');
 
 describe('generateMultiples()', () => {
   test('will return a new function', () => {
@@ -57,35 +61,5 @@ describe('secureFunc()', () => {
 
     securedFunction('Ilovevegans123!', 'a', 'b', 'c', 'd');
     expect(mockFunction).toBeCalledWith('a', 'b', 'c', 'd');
-  });
-});
-
-describe('rememberMe()', () => {
-  test('returns a new function', () => {
-    const rememberMeReturnValue = rememberMe();
-    expect(typeof rememberMeReturnValue).toBe('function');
-  });
-  test('maintains the functionality of the input function when no args are passed', () => {
-    const returnTwo = () => 2;
-    const rememberReturnTwo = rememberMe(returnTwo);
-    expect(rememberReturnTwo()).toBe(2);
-  });
-  test('maintain the functionality of the input function with arguments', () => {
-    const addNums = (a, b, c, d, e) => a + b + c + d + e;
-    const rememberAddNums = rememberMe(addNums);
-    expect(rememberAddNums(1, 2, 3, 4, 5)).toBe(15);
-  });
-  test('only calls the function once per unique set of arguments', () => {
-    const addNums = (a, b, c, d, e) => a + b + c + d + e;
-    const spiedAdder = jest.fn(addNums);
-
-    const rememberSpiedAdder = rememberMe(spiedAdder);
-    expect(rememberSpiedAdder(1, 2, 3, 4, 5)).toBe(15);
-    expect(rememberSpiedAdder(1, 2, 3, 4, 5)).toBe(15);
-    expect(spiedAdder).toBeCalledTimes(1);
-
-    expect(rememberSpiedAdder(1, 2, 3, 4, 6)).toBe(16);
-    expect(rememberSpiedAdder(1, 2, 3, 4, 6)).toBe(16);
-    expect(spiedAdder).toBeCalledTimes(2);
   });
 });

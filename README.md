@@ -195,69 +195,73 @@ anatUser.pots.holiday;
 
 ## Section 3 - Using Closures
 
-### 1 - `generateMultiples`
+### 1 - `makeStringDivider`
 
-Write a higher-order function called `generateMultiples`.
+Write a higher-order function called `makeStringDivider`.
 
-Your `generateMultiples` function should:
+Your `makeStringDivider` function should:
 
-- take a number ( representing a multiple ) as an argument
-- return a new function.
+- take a number (representing the length of each substring) as an argument
+- return a new function
 
 The new function should:
 
-- take a number to determine how long the list of multiples should be
-- return an array containing a list of multiples
+- take a string to be divided into a series of substrings, each of the length determined by the number originally passed to `makeStringDivider`
+- return an array containing a list of the substrings
+
+_Note:_ if the string cannot be divided evenly, then the final substring in the array should be shorter.
 
 ### For Example:
 
 ```js
-const makeMultiplesOf10 = generateMultiples(10);
-makeMultiplesOf10(0); // []
-makeMultiplesOf10(3); // [10, 20, 30]
+const divideStringInto3s = makeStringDivider(3);
+divideStringInto3s(''); // []
+divideStringInto3s('northcoders!'); // ['nor', 'thc', 'ode', 'rs!']
 ```
 
 ```js
-const makeMultiplesOf6 = generateMultiples(6);
-makeMultiplesOf6(1); // [6]
-makeMultiplesOf6(5); // [6, 12, 18, 24, 30]
+const divideStringInto4s = makeStringDivider(4);
+divideStringInto4s('the quick, brown fox'); // ['the ', 'quic', 'k, b', 'rown', ' fox']
+divideStringInto4s('goodbye'); // ['good', 'bye']
 ```
 
-### 2 - `secureFunc`
+### 2 - `makeIteratorFunc`
 
-Write a higher-order function called `secureFunc`.
+Write a higher-order function called `makeIteratorFunc`.
 
 It should do the following:
 
-- take an original password (string) and a function as its arguments
-- return a new function.
+- take an array and an iteratee (function to be called on the elements of the array) as its arguments
+- return a new function
 
 The new function should:
 
-- take a password attempt (string)
-- if the password attempt matches the original password then it will return invocation of the original function
-- otherwise, the new function will return a message stating: `Sorry your password is incorrect!`
+- on first invocation, return the result of calling the passed iteratee function with the first element in the array
+- on each subsequent invocation, return the result of calling the passed iteratee function with the next element in the array
+- return undefined once the iteratee has been called with all elements of the array
 
 ### For example:
 
 ```js
-const saySecret = () => {
-  return 'Hopscotch';
+const doubleNum = (num) => {
+  return num * 2;
 };
 
-const securedSaySecret = secureFunc('nc123@!', saySecret);
-securedSaySecret('nc123@!'); // returns 'Hopscotch';
-securedSaySecret('oops'); // returns 'Sorry your password is incorrect!';
+const doubleIterator = makeIteratorFunc([3, 4, 5], doubleNum);
+doubleIterator(); // returns 6
+doubleIterator(); // returns 8
+doubleIterator(); // returns 10
 ```
 
 ```js
-const sum = (a, b) => {
-  return a + b;
+const shoutString = (str) => {
+  return str.toUpperCase();
 };
 
-const securedSum = secureFunc('nc123@!', sum);
-securedSum('nc123@!', 21, 6); // returns 27
-securedSum('oops', 10, 5); // returns 'Sorry your password is incorrect!';
+const shoutingIterator = makeIteratorFunc(['hello', 'world'], shoutString);
+shoutingIterator(); // returns 'HELLO'
+shoutingIterator(); // returns 'WORLD'
+shoutingIterator(); // returns undefined
 ```
 
 ❗️ `Push your work to Github and submit it before moving on` ❗️
@@ -270,9 +274,9 @@ securedSum('oops', 10, 5); // returns 'Sorry your password is incorrect!';
 Implement a function `deepKeys` that will take an object as its argument and go through that object, including any nested objects, and collect all of the keys into a single array.
 
 ```js
-deepKeys({ a: 1, b: 2, c: 3 }) // ['a','b','c']
-deepKeys({ a: 1, b: 2, c: { d: 10 }) // ['a','b','c','d']
-deepKeys({ a: 1, b: { e: 10 }, c: { d: 10, e: { f: 100, h: 10 } } }) // [ 'a', 'b', 'e', 'c', 'd', 'e', 'f', 'h' ]
+deepKeys({ a: 1, b: 2, c: 3 }); // ['a','b','c']
+deepKeys({ a: 1, b: 2, c: { d: 10 } }); // ['a','b','c','d']
+deepKeys({ a: 1, b: { e: 10 }, c: { d: 10, e: { f: 100, h: 10 } } }); // [ 'a', 'b', 'e', 'c', 'd', 'e', 'f', 'h' ]
 ```
 
 ### 2 - `deepRoute`

@@ -1,65 +1,75 @@
 const {
-  generateMultiples,
-  secureFunc,
+  makeStringDivider,
+  makeIteratorFunc,
   rememberMe
-} = require('../sections/2-closure.js');
+} = require('../sections/3-closure.js');
 
-describe('generateMultiples()', () => {
+describe('makeStringDivider()', () => {
   test('will return a new function', () => {
-    const createMultiplesOf5 = generateMultiples();
-    expect(typeof createMultiplesOf5).toBe('function');
+    const splitStringInto5s = makeStringDivider(5);
+    expect(typeof splitStringInto5s).toBe('function');
   });
-  test('new function returns empty array when passed 0', () => {
-    const createMultiplesOf5 = generateMultiples(5);
-    expect(createMultiplesOf5(0)).toEqual([]);
+  test('new function returns empty array when passed empty string', () => {
+    const splitStringInto5s = makeStringDivider(5);
+    expect(splitStringInto5s('')).toEqual([]);
   });
-  test('when new function is passed 1, it will return a single multiple in an array', () => {
-    const createMultiplesOf5 = generateMultiples(5);
-    expect(createMultiplesOf5(1)).toEqual([5]);
+  test('when new function is passed string of length equal to value passed to original function, return array containing 1 string', () => {
+    const splitStringInto5s = makeStringDivider(5);
+    expect(splitStringInto5s('hello')).toEqual(['hello']);
 
-    const createMultiplesOf7 = generateMultiples(7);
-    expect(createMultiplesOf7(1)).toEqual([7]);
+    const splitStringInto7s = makeStringDivider(7);
+    expect(splitStringInto7s('goodbye')).toEqual(['goodbye']);
   });
-  test('when new function is given inputs > 1 it can generate more than 1 multiple in array', () => {
-    const createMultiplesOf5 = generateMultiples(5);
-    expect(createMultiplesOf5(2)).toEqual([5, 10]);
-    expect(createMultiplesOf5(3)).toEqual([5, 10, 15]);
-    expect(createMultiplesOf5(6)).toEqual([5, 10, 15, 20, 25, 30]);
-
-    const createMultiplesOf7 = generateMultiples(7);
-    expect(createMultiplesOf7(4)).toEqual([7, 14, 21, 28]);
+  test('when new function is given string of length greater than value passed to original function, return array of substrings', () => {
+    const splitStringInto4s = makeStringDivider(4);
+    expect(splitStringInto4s('programs')).toEqual(['prog', 'rams']);
+    expect(splitStringInto4s('the quick, brown fox')).toEqual([
+      'the ',
+      'quic',
+      'k, b',
+      'rown',
+      ' fox'
+    ]);
+  });
+  test('when new function is given string that does not divide evenly, the final substring in the returned array is shorter', () => {
+    const splitStringInto4s = makeStringDivider(4);
+    expect(splitStringInto4s('hello')).toEqual(['hell', 'o']);
+    expect(splitStringInto4s('goodbye')).toEqual(['good', 'bye']);
   });
 });
 
-describe('secureFunc()', () => {
+describe('makeIteratorFunc()', () => {
   test('returns a new function', () => {
-    const securedFunc = secureFunc();
-    expect(typeof securedFunc).toBe('function');
+    const iterativeFunc = makeIteratorFunc();
+    expect(typeof iterativeFunc).toBe('function');
   });
-  test('new function returns an error message when password is incorrect', () => {
-    function printSecret() {
-      return 'I love raw garlic';
+  test('new function returns result of calling passed iteratee with first array element', () => {
+    function doubleNum(num) {
+      return num * 2;
     }
-    const securedPrintSecret = secureFunc('Ilovevegans123!', printSecret);
-    expect(securedPrintSecret('Wrong password!')).toBe(
-      `Sorry your password is incorrect!`
-    );
+    const nums = [7, 11, 13];
+    const doubleIterator = makeIteratorFunc(nums, doubleNum);
+    expect(doubleIterator()).toBe(14);
   });
-  test('new function will return a call to the original function when password is correct', () => {
-    function printSecret() {
-      return 'I love raw garlic!';
+  test('new function returns results of calling passed iteratee with every array element in order', () => {
+    function shoutString(str) {
+      return str.toUpperCase();
     }
-    const securedPrintSecret = secureFunc('Ilovevegans123!', printSecret);
-    expect(securedPrintSecret('Ilovevegans123!')).toBe('I love raw garlic!');
+    const words = ['local', 'execution', 'context'];
+    const shoutIterator = makeIteratorFunc(words, shoutString);
+    expect(shoutIterator()).toBe('LOCAL');
+    expect(shoutIterator()).toBe('EXECUTION');
+    expect(shoutIterator()).toBe('CONTEXT');
   });
-  test('new function can pass all its arguments to the original function', () => {
-    const mockFunction = jest.fn();
-
-    const securedFunction = secureFunc('Ilovevegans123!', mockFunction);
-    securedFunction('Ilovevegans123!', 10, 3);
-    expect(mockFunction).toBeCalledWith(10, 3);
-
-    securedFunction('Ilovevegans123!', 'a', 'b', 'c', 'd');
-    expect(mockFunction).toBeCalledWith('a', 'b', 'c', 'd');
+  test('new function returns undefined when number of calls exceeds number of items in given array', () => {
+    function shoutString(str) {
+      return str.toUpperCase();
+    }
+    const words = ['local', 'execution', 'context'];
+    const shoutIterator = makeIteratorFunc(words, shoutString);
+    shoutIterator();
+    shoutIterator();
+    shoutIterator();
+    expect(shoutIterator()).toBe(undefined);
   });
 });

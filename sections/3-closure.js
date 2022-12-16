@@ -1,5 +1,5 @@
-function generateMultiples() {}
+function makeStringDivider(substrLength) {}
 
-function secureFunc() {}
+function makeIteratorFunc() {}
 
-module.exports = { generateMultiples, secureFunc };
+module.exports = { makeStringDivider, makeIteratorFunc };
